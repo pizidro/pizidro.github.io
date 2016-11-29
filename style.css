@@ -1,0 +1,179 @@
+/* stylesheet for all 3 pages */
+body {
+    background: url('images/background2.png') no-repeat;
+}
+
+.container {
+    border: 1px solid #000000;
+    margin: auto;
+    width: 960px;
+
+}
+
+.nav {
+    background-color: #333333;
+    color: #fff;
+    text-align: center;
+}
+
+.nav li {
+    display: inline-block;
+    padding: 17px 7px;
+
+}
+
+.footer {
+    background-color: #00bfff;
+    clear: both;
+}
+
+/* nav classes */
+.home {
+    color: #eef0eb;
+    font-family:'Sue Ellen Francisco',cursive;
+    font-weight: 400px;
+    display: inline-block;
+    text-align: left;
+}
+
+.destinations {
+    color: #eef0eb;
+    font-family:'Sue Ellen Francisco',cursive;
+    font-weight: 400px;
+}
+
+.about {
+    color: #eef0eb;
+    font-family:'Sue Ellen Francisco',cursive;
+    font-weight: 400px;
+}
+
+.nomadic {
+   float: left;
+   color: #eef0eb;
+   font-family:'Sue Ellen Francisco',cursive;
+   font-weight: 0px;
+}
+
+.nomadic img {
+    width: 35px;
+    margin-left: -20px;
+}
+
+/* stylesheet for the footer */
+.footer {
+    text-align: center;
+    background-color: #808080;
+}
+
+.cities {
+    text-align: left;
+    color: #000000;
+    font-family:'Sue Ellen Francisco',cursive;
+    
+}
+
+.main {
+  width: 82%;
+  float: right;
+  height: 400px;
+  background-color: inherit;
+  margin-top: -10px;
+  }
+
+.tips {
+ text-align: center;
+ margin-top: 35px;
+ font-family: 'Sue Ellen Francisco',cursive;
+ background: url('images/banner.png') no-repeat;
+ background-size: contain;
+ font-size: 20px;
+ font-weight: 700;
+ display: block;
+ margin: 30px auto 10px auto;
+ padding: 15px 0;
+ max-width: 425px;
+ height: 60px;
+ line-height: 1;
+}
+
+/* side bar for the homepage */
+.side {
+    width: 17%;
+    float: left;
+    height: 500px;
+    background-color: none;
+}
+
+.boston {
+    font-family:'Sue Ellen Francisco',cursive;
+}
+
+.nyc {
+    font-family:'Sue Ellen Francisco',cursive;
+}
+
+.austin {
+     font-family:'Sue Ellen Francisco',cursive;
+}
+.austin img {
+margin-top: -20px;
+
+    width:150px;
+    height:100px;
+}
+
+.boston img {
+width:150px;
+height:100px;
+margin-top: -20px;
+}
+
+.nyc img {
+width:150px;
+height:100px;
+margin-top: -20px;
+
+}
+/* main content for the home page */
+
+.pictures {
+    margin-top: -60px;
+}
+
+.main img {
+    width: 250px;
+    height: 150px;
+    margin-top: 40px;
+}
+ /* side bar */
+.h4 {
+    margin-top: 5px;
+    font-family:'Sue Ellen Francisco',cursive;
+
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+} 
+
+
+
+/* stylesheet for the about page */
+#about {
+    text-align: center;
+
+}
+
+.h2p {
+clear: both;
+font-family: 'Sue Ellen Francisco',cursive;
+}
+
+/* style sheet for the destionations page */
+
+.destinationspics {
+margin-top: -50px;
+margin-left: -70px;
+}
