@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Patrick Izidro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #162233;
+    --navy-light: #1e3048;
+    --gold: #c9a84c;
+    --gold-light: #e2c97e;
+    --cream: #f5f0e8;
+    --muted: #8a9bb0;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(13,27,42,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 30%, rgba(30,48,72,0.8) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* decorative lines */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 50%);
+    border-left: 1px solid rgba(201,168,76,0.12);
+    pointer-events: none;
+  }
+
+  .hero-text {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 3rem 8rem 5rem;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--muted);
+    margin: 1.4rem 0 2.4rem;
+    font-style: italic;
+    max-width: 38ch;
+    line-height: 1.6;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-outline {
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    background: transparent;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+
+  .hero-right {
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    padding: 8rem 4rem 8rem 5rem;
+    position: relative; z-index: 2;
+  }
+
+  /* stats strip */
+  .stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    margin-top: 1rem;
+  }
+  .stat { border-left: 2px solid rgba(201,168,76,0.3); padding-left: 1.2rem; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; margin-top: 0.25rem; text-transform: uppercase; }
+
+  /* scroll indicator */
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: var(--muted); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    z-index: 3;
+    animation: float 2.5s ease-in-out infinite;
+  }
+  .scroll-hint::after {
+    content: '';
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  @keyframes float { 0%,100%{ transform: translateX(-50%) translateY(0);} 50%{ transform: translateX(-50%) translateY(6px);} }
+
+  /* ── SECTIONS ── */
+  section { padding: 7rem 5rem; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.2); }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 2rem;
+  }
+  h2 em { font-style: italic; color: var(--gold-light); }
+
+  /* ── ABOUT ── */
+  .about { background: var(--navy-mid); }
+  .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: center; }
+  .about-body p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; line-height: 1.9; }
+  .about-body p strong { color: var(--cream); font-weight: 400; }
+
+  .interests-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .tag {
+    padding: 0.35rem 1rem;
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience { background: var(--navy); }
+  .exp-inner { max-width: 900px; margin: 0 auto; }
+  .exp-item {
+    display: grid; grid-template-columns: 180px 1fr; gap: 2rem;
+    padding: 2.2rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .exp-item.visible { opacity: 1; transform: none; }
+  .exp-meta { text-align: right; padding-top: 0.15rem; }
+  .exp-date { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .exp-company { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold-light); margin-top: 0.3rem; font-style: italic; }
+  .exp-title { font-size: 1rem; color: var(--white); font-weight: 400; margin-bottom: 0.6rem; }
+  .exp-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.8; }
+
+  /* ── WRITING SECTION ── */
+  .writing { background: var(--navy-mid); }
+  .writing-inner { max-width: 1100px; margin: 0 auto; }
+  .writing-intro { color: var(--muted); max-width: 60ch; margin-bottom: 3rem; font-size: 1rem; line-height: 1.9; }
+  .writing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .writing-card {
+    background: var(--navy-light);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+  .writing-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
+  .card-tag { font-size: 0.68rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.8rem; }
+  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--white); font-weight: 400; line-height: 1.35; margin-bottom: 0.7rem; }
+  .card-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+  .card-arrow { margin-top: 1.5rem; color: var(--gold); font-size: 0.85rem; letter-spacing: 0.05em; }
+
+  /* ── RESEARCH ── */
+  .research { background: var(--navy); }
+  .research-inner { max-width: 900px; margin: 0 auto; }
+  .pub-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex; gap: 1.5rem; align-items: flex-start;
+  }
+  .pub-year { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold); min-width: 48px; margin-top: 0.1rem; }
+  .pub-title { color: var(--cream); font-size: 0.95rem; line-height: 1.6; }
+  .pub-venue { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; font-style: italic; }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    text-align: center;
+    padding: 7rem 5rem;
+  }
+  .contact h2 { margin-bottom: 1rem; }
+  .contact p { color: var(--muted); max-width: 50ch; margin: 0 auto 2.5rem; font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
+  .contact-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.75rem;
+    color: rgba(138,155,176,0.5);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── FADE-IN ── */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-text { padding: 8rem 2rem 4rem; }
+    section { padding: 5rem 2rem; }
+    .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .exp-item { grid-template-columns: 1fr; }
+    .exp-meta { text-align: left; }
+    .writing-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Patrick Izidro</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Washington, DC</div>
+    <h1>Patrick<br><em>Izidro</em></h1>
+    <p class="hero-subtitle">Economist. Analyst. Thinker at the intersection of international finance, policy, and markets.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#about">Learn More</a>
+      <a class="btn btn-outline" href="https://www.linkedin.com/in/pizidro/" target="_blank">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-num">MA</div>
+        <div class="stat-label">Int'l Economics &amp; Finance<br>Johns Hopkins SAIS</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">BA</div>
+        <div class="stat-label">Political Economy<br>Williams College</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Research Publications &amp; Papers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Languages &amp; Technical Toolkits</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="fade-up">
+      <div class="section-label">About</div>
+      <h2>Finance meets <em>curiosity</em></h2>
+    </div>
+    <div class="about-body fade-up">
+      <p>I'm an Investment Operations Associate at <strong>Cambridge Associates</strong>, where I support institutional clients with portfolio data management across traditional and alternative asset classes. My work sits at the intersection of rigorous data analysis and client-facing problem solving.</p>
+      <p>I hold a Master's in <strong>International Economics and Finance</strong> from Johns Hopkins SAIS and a BA in <strong>Political Economy</strong> from Williams College — a combination that shapes how I approach markets: always with one eye on the macro.</p>
+      <p>When I'm not in the data, I'm thinking about monetary policy, exchange rates, cross-border trade — or planning the next trip. I'm a native Portuguese and English speaker, and hold intermediate Spanish and French.</p>
+      <div class="interests-list">
+        <span class="tag">Economics</span>
+        <span class="tag">Finance</span>
+        <span class="tag">International Policy</span>
+        <span class="tag">Travel</span>
+        <span class="tag">Cinema</span>
+        <span class="tag">Econometrics</span>
+        <span class="tag">R & Python</span>
+        <span class="tag">Portuguese</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="exp-inner">
+    <div class="fade-up">
+      <div class="section-label">Career</div>
+      <h2>Where I've <em>worked</em></h2>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Oct 2024 – Present</div>
+        <div class="exp-company">Cambridge Associates</div>
+      </div>
+      <div>
+        <div class="exp-title">Investment Operations Associate</div>
+        <div class="exp-desc">Oversee investment data processing for a portfolio of external managers across traditional and alternative asset classes. Primary contact for resolving data processing needs for internal teams and external stakeholders. Streamlining workflows and improving data quality via Excel and proprietary platforms.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Jul 2023 – Jun 2024</div>
+        <div class="exp-company">Johns Hopkins University</div>
+      </div>
+      <div>
+        <div class="exp-title">Economics Research Assistant</div>
+        <div class="exp-desc">Applied econometric techniques using STATA, EViews, R, and Python to interpret findings and assess implications for fiscal and monetary policy. Managed large datasets, performed regression analysis, and supported data visualization for faculty research projects.</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Jun – Aug 2022</div>
+        <div class="exp-company">Williams College Investment Office</div>
+      </div>
+      <div>
+        <div class="exp-title">Summer Investment Analyst</div>
+        <div class="exp-desc">Contributed over 550 hours to the Investment and Operations teams, supporting the $4B+ endowment portfolio through portfolio analysis, manager underwriting, due diligence, and a full-cycle case study presented to the team.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING IDEAS -->
+<section class="writing" id="writing">
+  <div class="writing-inner">
+    <div class="fade-up">
+      <div class="section-label">Writing</div>
+      <h2>Ideas worth <em>exploring</em></h2>
+    </div>
+    <p class="writing-intro fade-up">A website is a perfect space to develop a point of view. Here are three directions you could take your writing — each plays to your strengths and background. Think of this as a launchpad.</p>
+    <div class="writing-grid">
+      <div class="writing-card fade-up">
+        <div class="card-tag">💡 Idea 01</div>
+        <div class="card-title">Economics for the Curious</div>
+        <div class="card-desc">Break down dense macro and finance topics — exchange rates, central banking, trade policy — for intelligent non-experts. Think accessible, opinionated, and well-sourced essays.</div>
+        <div class="card-arrow">Explore this direction →</div>
+      </div>
+      <div class="writing-card fade-up">
+        <div class="card-tag">✈️ Idea 02</div>
+        <div class="card-title">Economics Through Travel</div>
+        <div class="card-desc">Combine your love of travel with your analytical lens. What does a city's infrastructure tell you about monetary policy? What does street-level commerce reveal about trade? A unique angle.</div>
+        <div class="card-arrow">Explore this direction →</div>
+      </div>
+      <div class="writing-card fade-up">
+        <div class="card-tag">🎬 Idea 03</div>
+        <div class="card-title">Finance in Film</div>
+        <div class="card-desc">An economist reviews the movies. From The Big Short to No Country for Old Men — what do films get right (or wrong) about money, markets, and power? Criticism with a quantitative soul.</div>
+        <div class="card-arrow">Explore this direction →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="research" id="research">
+  <div class="research-inner">
+    <div class="fade-up">
+      <div class="section-label">Research &amp; Publications</div>
+      <h2>Scholarly <em>work</em></h2>
+    </div>
+    <div class="fade-up">
+      <div class="pub-item">
+        <div class="pub-year">2024</div>
+        <div>
+          <div class="pub-title">Race and Superfund Site Remediation</div>
+          <div class="pub-venue">PNAS Nexus</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2024</div>
+        <div>
+          <div class="pub-title">Revisiting Exchange Rate Exposure Across Industries: A Contemporary Analysis from the USA</div>
+          <div class="pub-venue">SAIS Capstone</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2024</div>
+        <div>
+          <div class="pub-title">Decoding Central Banking: Unveiling Taylor Rules for Comparative Analysis</div>
+          <div class="pub-venue">SAIS Applied Research Project</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2023</div>
+        <div>
+          <div class="pub-title">Investigating the Pilot Shortage in the United States</div>
+          <div class="pub-venue">Williams College Capstone</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="fade-up">
+    <div class="section-label" style="justify-content:center; margin-bottom:1.5rem;">Get in Touch</div>
+    <h2>Let's <em>connect</em></h2>
+    <p>Whether it's about markets, research, a career conversation, or a film recommendation — reach out.</p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:pizidro1@alumni.jh.edu">Email Me</a>
+      <a class="btn btn-outline" href="https://www.linkedin.com/in/pizidro/" target="_blank">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2025 Patrick Izidro &nbsp;·&nbsp; Washington, DC</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up, .exp-item').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
